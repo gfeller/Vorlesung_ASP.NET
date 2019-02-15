@@ -1,0 +1,9 @@
+﻿@page
+@model Examples.Pages.Razor.PartialContainerModel
+@{
+    ViewData["Title"] = "PartialContainer";
+}
+
+<partial name="_Card"  for="Card1" />
+<partial name="_Card"  for="Card2" /> 
+<partial name="_Card" model='new Examples.ViewModels.CardViewModel() { Message = "Something went wrong", Type = Examples.ViewModels.CardType.Danger}'/>   

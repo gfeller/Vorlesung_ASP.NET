@@ -1,0 +1,17 @@
+﻿@page
+@model Examples.Pages.Session.SessionModel
+@{
+    Layout = "_SessionLayout";
+    ViewData["Title"] = "Session";
+}
+
+<div>
+    @foreach (var theme in Model.Themes)
+    {
+        <a asp-page="Session" asp-route-theme="@theme" class="@(Model.SelectedTheme == theme ? "active" : "")">@theme - Theme</a>
+    }
+</div>
+<div>
+    <a asp-page="Session" class="btn btn-primary">Refresh</a>
+    <a asp-page="SessionWithFilter" class="btn btn-secondary">Andere Seite</a>
+</div>

@@ -1,0 +1,16 @@
+﻿@page
+@model Examples.Pages.Razor.TempDataErrorModel
+@{
+    ViewData["Title"] = "TempDataError";
+}
+
+
+<p>@(Model.IsNew ? "Danke für Ihre Bestellung" : "Ihre Bestellung")</p>
+
+<div>@Model.Pizzaname (@Model.Amount)</div>
+
+
+@if (Model.IsNew)
+{
+    <button onclick="document.location.reload()" class="btn btn-primary">Refresh</button>
+}

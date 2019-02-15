@@ -1,0 +1,24 @@
+﻿@page
+@{
+    ViewData["Title"] = "AjaxAutocomplete";
+}
+
+
+<input id="city" list="cities-list" />
+<datalist id="cities-list"></datalist>
+
+@section Scripts{
+    <script>
+        const list = document.getElementById("cities-list");
+
+        document.getElementById("city").addEventListener("input",
+            async (args) => {
+                var url = new URL("./Ajax/Ajax", window.location.origin);
+                var params = { handler: "Autocomplete", text: args.target.value }
+                url.search = new URLSearchParams(params);
+
+                const result = await fetch(url, { method: "get" });
+                list.innerHTML = (await result.json()).map(x => `<option>${x}</option>`);
+            });
+    </script>
+} 

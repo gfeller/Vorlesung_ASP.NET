@@ -1,0 +1,19 @@
+﻿@page
+@model PostWithClassModel
+@{
+    ViewData["Title"] = "PostWithClass";
+}
+
+<form asp-page="/Post">
+    <input name="echoText" placeholder="Echo-Text" />
+    <input name="times" type="number" placeholder="Anzahl" />
+    <button type="submit">Send</button>
+</form>
+
+@if (Model.Data != null)
+{
+    for (var i = 0; i < Model.Data.Times; i++)
+    {
+        <span>@Model.Data.EchoText</span>
+    }
+}

@@ -1,0 +1,28 @@
+﻿@page
+@{
+    ViewData["Title"] = "Syntax";
+}
+
+@{
+    var name = "michael";
+}
+
+<p>Hallo @name</p>
+
+@{
+    var members = new[] {"Michael", "Iris", "Bob"};
+
+    @: Anzahl Mitglieder: @members.Length
+    <ul>
+        @foreach (var member in members)
+        {
+            <li style="@(member.StartsWith("M") ? "color:red" : "")">@member</li>
+        }
+    </ul>
+}
+
+
+<footer>
+    <address>mgfeller@hsr.ch</address>
+    <p>Twitter: @@mgfeller</p>
+</footer>

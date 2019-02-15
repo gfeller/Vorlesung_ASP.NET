@@ -1,0 +1,8 @@
+﻿@page
+@{
+    ViewData["Title"] = "ViewComponent";
+}
+
+<vc:to-do-list></vc:to-do-list>
+
+@await Component.InvokeAsync("ToDoList")

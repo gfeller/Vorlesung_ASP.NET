@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+        <a class="navbar-brand" asp-area="" asp-page="/Index">Home</a>
+        @RenderSection("Nav", false)
+    </div>
+</nav>
+
+
+@if (ViewData.ContainsKey("Error"))
+{
+    <div class="alert alert-primary" role="alert">
+        <div>
+            _ViewDataLayout.cshtml: @@ViewData["Error"] => @ViewData["Error"]
+        </div>
+        <div>
+            _ViewDataLayout.cshtml: @@ViewBag.Error => @ViewBag.Error
+        </div>
+    </div>
+}
+
+<div class="container">
+    @RenderBody()
+</div>
+
+</body>
+</html>

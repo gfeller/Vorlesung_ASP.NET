@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    @if (ViewBag.SelectedTheme != null)
+    {
+        <link rel="stylesheet" href="~/css/@(ViewBag.SelectedTheme.ToLower()).css" />
+    }
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+        <a class="navbar-brand" asp-area="" asp-page="/Index">Home</a>
+        @RenderSection("Nav", false)
+    </div>
+</nav>
+
+
+
+<div class="container">
+    @RenderBody()
+</div>
+
+</body>
+</html>

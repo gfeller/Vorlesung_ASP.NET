@@ -1,0 +1,36 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    <div class="list-group">
+        <a asp-page="#" class="list-group-item list-group-item-action list-group-item-primary">Bindings</a>
+        <a asp-page="/PropertyBindings/Post" class="list-group-item list-group-item-action">Binding with Post</a>
+        <a asp-page="/PropertyBindings/PostWithClass" class="list-group-item list-group-item-action">Binding with Post and Class</a>
+        <a asp-page="/PropertyBindings/Parameters" class="list-group-item list-group-item-action">Binding with Get</a>
+
+        <a asp-page="#" class="list-group-item list-group-item-action list-group-item-primary">Razor</a>
+        <a asp-page="/Razor/Syntax" class="list-group-item list-group-item-action">Syntax</a>
+        <a asp-page="/Razor/TagHelpers" class="list-group-item list-group-item-action">Tag Helper</a>
+        <a asp-page="/Razor/ViewData" class="list-group-item list-group-item-action">ViewData</a>
+        <a asp-page="/Razor/TempData" class="list-group-item list-group-item-action">TempData</a>
+        <a asp-page="/Razor/Rendersection" class="list-group-item list-group-item-action">Rendersection</a>
+        <a asp-page="/Razor/Hierarchic/Hierarchic" class="list-group-item list-group-item-action">Hierarchic</a>
+        <a asp-page="/Razor/PartialContainer" class="list-group-item list-group-item-action">Partial</a>
+        <a asp-page="/Razor/ViewComponent" class="list-group-item list-group-item-action">ViewComponent</a>
+
+
+
+        <a asp-page="#" class="list-group-item list-group-item-action list-group-item-primary">Ajax</a>
+        <a asp-page="/Ajax/AjaxFetch" class="list-group-item list-group-item-action">Mit fetch</a>
+        <a asp-page="/Ajax/AjaxJQueryUnobtrusive" class="list-group-item list-group-item-action">Ohne Javascript</a>
+        <a asp-page="/Ajax/AjaxAutocomplete" class="list-group-item list-group-item-action">Autocomplete</a>
+        <a asp-page="/Ajax/TodoList" class="list-group-item list-group-item-action">ViewComponent</a>
+
+        <a asp-page="#" class="list-group-item list-group-item-action list-group-item-primary">Session</a>
+        <a asp-page="/Session/Session" class="list-group-item list-group-item-action">Theme Switcher</a>
+        <a asp-page="/Session/SessionWithFilter" class="list-group-item list-group-item-action">Attribute</a>
+    </div>
+</div>

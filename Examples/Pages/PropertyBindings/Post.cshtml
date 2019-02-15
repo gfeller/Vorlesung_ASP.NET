@@ -1,0 +1,19 @@
+﻿@page
+@model PostModel
+@{
+    ViewData["Title"] = "Post";
+}
+
+<form asp-page="/Post">
+    <input name="echoText" placeholder="Echo-Text" />
+    <input name="times" type="number" placeholder="Anzahl" />
+    <button type="submit">Send</button>
+</form>
+
+@if (Model.Times > 0)
+{
+    for (var i = 0; i < Model.Times; i++)
+    {
+        <span>@Model.EchoText</span>
+    }
+}

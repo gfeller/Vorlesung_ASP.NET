@@ -1,0 +1,26 @@
+﻿@page
+@{
+    ViewData["Title"] = "AjaxFetch";
+}
+
+<form asp-page="Ajax" asp-page-handler="Echo" id="echoForm">
+    <input name="echoText"/>
+    <input type="submit"/>
+</form>
+
+<div id="echoOutput"></div>
+
+
+@section Scripts{
+    <script>
+        const echo = document.getElementById("echoOutput");
+        document.getElementById("echoForm").addEventListener("submit",
+            async (args) => {
+                args.preventDefault();
+
+                const formData = new FormData(args.target);
+                const result = await fetch(args.target.action, { method: "post", body: formData });
+                echo.innerText = await result.text();
+            });
+    </script>
+}

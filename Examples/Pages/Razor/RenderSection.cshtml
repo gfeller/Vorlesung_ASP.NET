@@ -1,0 +1,12 @@
+﻿@page
+@{
+    ViewData["Title"] = "RenderSection";
+    Layout = "~/Pages/Razor/_RazorLayout.cshtml";
+}
+
+@section Nav{
+    <a class="navbar-brand" asp-area="" asp-page="./ViewData">ViewData</a>
+    <a class="navbar-brand" asp-area="" asp-page="./TempData">TempData</a>
+}
+
+<h1>Rendersection</h1>
