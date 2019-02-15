@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<title>ASP.NET MVC</title>
+		<meta name="robots" content="noindex, nofollow" />
+		<link rel="icon" href="./HSR.Template.Exercises/icon-document.png" type="image/png" />
+
+		<link rel="stylesheet" type="text/css" href="./HSR.Template.Exercises/documentStyle.css" />
+		<script src="HSR.Template.Exercises/solutions.js"></script>
+	</head>
+	<body>
+		<h1>ASP.NET Core</h1>
+
+		<h2>Ziel</h2>
+		Anhand eines <a href="https://de.wikipedia.org/wiki/Body-Mass-Index">BMI-Rechners</a> sollen die im Unterricht erworbenen ASP.NET Grundlagen angewendet und vertieft werden.
+
+
+		<h2>Aufgabe 1</h2>
+		<p>Der BMI-Rechner könnte in einer vereinfachten Variante wie folgt aussehen:</p>
+		<img src="images/bmi.png" style="width: 100%; max-width:700px">
+
+		<p>Gehen Sie bei Ihrer Implementation wie folgt vor:</p>
+		<ol style="list-style: decimal">
+			<li>Erstellen Sie ein neues ASP.NET Projekt.</li>
+			<li style="list-style: none">
+				<ul>
+					<li>Nutzen Sie das „Web Application“ (ohne Authentication).</li>
+					<li>Testen Sie jeden Schritt indem Sie Ihr Projekt im Browser ausführen.</li>
+				</ul>
+			</li>
+			<li>Löschen Sie unnötigen Code/Files</li>
+			<li style="list-style: none">
+				<ul>
+					<li>_Layout.cshtml: Es wird keine Navigation benötigt.</li>
+					<li>Löschen Sie unbenutzte Files.</li>
+				</ul>
+			</li>
+			<li>Erstellen Sie innerhalb der Index-Seite das HTML sowie den Razor-Code für den Rechner.</li>
+			<li>Implementieren Sie die OnPost-Methode, welche den BMI anhand des Gewichtiges und der Höhe berechnen kann.</li>
+			<li style="list-style: none">
+				<ul>
+					<li>Definieren Sie eine Klasse um die Daten (Höhe und Gewicht) zu gruppieren.</li>
+					<li>Bei fehlerhaften Eingaben soll "Fehlerhafte Daten“ ausgegeben werden. z.B. Gewicht über 500kg oder kleiner 30cm</li>
+					<li>Das Formular soll POST-Request korrekt absenden. Nutzen Sie dafür die Tag-Helpers.</li>
+				</ul>
+			</li>
+			<li>Die Berechnung des BMI's soll in einen Service ausgelagert werden:</li>
+			<li style="list-style: none">
+				<ul>
+					<li>Definieren Sie einen BmiService, welcher die Berechnung übernimmt.</li>
+					<li>Registrieren Sie den BmiService im Dependency-Injection-Container.</li>
+					<li>Lassen Sie sich den Service „Injecten“ und nutzen Sie die vom Dependency-Injection-Container zur Verfügung gestellte Instanz.</li>
+				</ul>
+			</li>
+
+			<li>Nutzen Sie die AJAX um das Resultat darzustellen.</li>
+			<li style="list-style: none">
+				<ul>
+					<li>Definieren Sie dafür einen Handler oder eine seperate Page</li>
+				</ul>
+			</li>
+		</ol>
+
+		<h2>Aufgabe 2</h2>
+
+		<p>Erstellen Sie eine weitere Variante des Rechners.</p>
+		<p>In dieser Variante soll der BMI als Tabelle dargestellt werden und die zutreffende Reihe hervorgehoben werden.
+			Generieren Sie die BMI-Tabelle (siehe Bild) aus einem strukturierten Datenbestand.</p>
+		<img style="margin-right:20px; max-width: 300px" src="images/bmi2.png" >
+
+		<p> Als Basis könnte folgende Struktur dienen:</p><div style="display:inline-block"><pre class="prettyprint"><code>var data = new[]
+{
+     new {Text = "starkes Untergewicht", Max=16.0},
+     new {Text = "mäßiges Untergewicht", Max=17.0},
+     new {Text = "leichtes Untergewicht", Max=18.5},
+     new {Text = "Normalgewicht", Max=25.0},
+     new {Text = "Präadipositas", Max=30.0},
+     new {Text = "Adipositas Grad I", Max=35.0},
+     new {Text = "Adipositas Grad II", Max=40.0},
+     new {Text = "Adipositas Grad III", Max=999.0},
+};</code></pre>
+		</div>
+
+		<ol style="list-style: decimal">
+			<li>Definieren Sie eine weitere Page welche die Daten (Höhe und Gewicht) entgegennimmt.</li>
+			<li>Definieren Sie die Daten als Array und „rendern“ Sie die Tabelle mit einer foreach-Schleife.</li>
+			<li>Verbinden Sie Ihre Lösung von Aufgabe 1 und Aufgabe 2: Beim Resultat bei Aufgabe 1 soll nicht mehr nur der BMI stehen sondern die generierte Razor Page von Aufgabe 2.</li>
+			<li>Alternative: Definieren Sie die BMI-Tabelle als View-Component</li>
+		</ol>
+
+		<h2>Aufgabe 3</h2>
+		<p>Versuchen Sie ihre Lösung mit zu Stylen z.B. mit Bootstrap</p>
+
+		<img src="images/withstyle.png" style="width: 100%; max-width:400px">
+
+		<h2>Aufgabe 4</h2>
+		<p>Vergleichen Sie ihre Lösung mit der abgegeben Lösung.</p>
+
+	</body>
+</html>
