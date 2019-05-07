@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Examples.Pages.PropertyBindings
+namespace Examples.Pages.Page
 {
     public class PostModel : PageModel
     {

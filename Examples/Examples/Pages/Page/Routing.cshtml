@@ -1,0 +1,18 @@
+﻿@page "/test/{id:int?}"
+@model Examples.Pages.Page.RoutingModel
+@{
+    ViewData["Title"] = "Routing";
+}
+
+<h1>Routing</h1>
+<p>
+    @RouteData.Values["id"]
+</p>
+<p>
+    @Model.Id
+</p>
+<p>
+    @Model.Id2
+</p>
+
+

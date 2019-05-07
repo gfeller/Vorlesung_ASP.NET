@@ -1,0 +1,11 @@
+﻿@page
+
+@model ParametersModel
+@{
+    ViewData["Title"] = "Parameters";
+}
+
+<a asp-page="/PropertyBindings/Parameters" asp-route-val1="1" asp-route-val2="2">V1: Get</a>
+
+<span>@Model.Val1 : @Model.Val2</span>
+
