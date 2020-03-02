@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Examples
 {
@@ -22,7 +23,8 @@ namespace Examples
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(x => { x.Filters.Add<SessionFilter>(); }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddRazorPages();
+
             services.AddSession(options => {
                 options.IdleTimeout = TimeSpan.FromMinutes(15);
             });
@@ -31,7 +33,7 @@ namespace Examples
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -49,7 +51,12 @@ namespace Examples
             app.UseCookiePolicy();
             app.UseSession();
 
-            app.UseMvc();
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+            });
         }
     }
 }
