@@ -1,0 +1,39 @@
+﻿@page "/Hello"
+
+<h3>HelloWorld</h3>
+
+Hello @Name
+
+<button @onclick="Toggle">Toggle</button>
+
+@code {
+    public string Name { get; set; } = "Michael";
+
+    protected async Task Toggle()
+    {
+        if (Name == "Michael")
+        {
+            Name = "Gfeller";
+        }
+        else
+        {
+            Name = "Michael";
+        }
+    }
+}
+
+
+<h1>Counter</h1>
+
+<p>Current count: @_currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int _currentCount = 0;
+
+    private void IncrementCount()
+    {
+        _currentCount++;
+    }
+}
