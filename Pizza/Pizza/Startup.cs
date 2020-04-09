@@ -48,6 +48,12 @@ namespace Pizza
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+			/*
+            services.AddAuthentication().AddFacebook(option =>
+            {
+                option.AppId = "526702434438723";
+                option.AppSecret = "b762f6cbe889ea1a7c7f85dc931cb7e7";
+            });*/
 
             services.AddMvc();
             services.AddSingleton<DataService>();
@@ -59,6 +65,14 @@ namespace Pizza
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+
+                using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+                {
+                    // serviceScope.ServiceProvider.GetService<ApplicationDbContext>().Database.Migrate(); // not required if InMemory
+                }
+
+                app.ApplicationServices.GetService<DataService>().EnsureData("123456");
+
             }
             else
             {
