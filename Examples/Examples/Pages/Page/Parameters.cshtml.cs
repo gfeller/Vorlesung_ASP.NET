@@ -12,9 +12,10 @@ namespace Examples.Pages.Page
         [BindProperty(SupportsGet = true)]
         public long Val2 { get; set; }
 
-        public void OnGet()
+        public void OnGet(long val1, long val2)
         {
-
+            this.Val1 = val1;
+            this.Val2 = val2;
         }
     }
 }
