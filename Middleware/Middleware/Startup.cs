@@ -21,68 +21,37 @@ namespace Middleware
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
-
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                await context.Response.WriteAsync("Hello");
             });
 
 
             /*
-
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World! 2");
+                await context.Response.WriteAsync("World");
             });
                  
 
             app.Use(async (context, next) =>
             {
-                System.Diagnostics.Debug.WriteLine("Handling request: " + context.Request.Path);
-                await next.Invoke();
+                await context.Response.WriteAsync("Hello");
+                // await next.Invoke();
             });
 
+            app.UseWelcomePage();
+
+            app.UseWelcomePage("/hallo");
 
             app.Map("/hallo", builder => builder.UseWelcomePage());
-            //app.UseWelcomePage("/hallo");
-          
-   
 
 
-          
-            app.Map("/logging", builder =>
-            {
-                builder.UseMiddleware<RequestLoggerMiddleware>();
-                
-                builder.Run(async (context) =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
 
-            app.UseWelcomePage()
-            app.UseMiddleware<RequestLoggerMiddleware>();
+            app.UseStaticFiles();
 
-
-            app.Map("/logging", builder =>
-            {
-                builder.Run(async (context) =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
-
-
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });*/
-
-            //app.UseStaticFiles();
-            //app.UseMvc();
+            app.UseMiddleware<RequestLoggerMiddleware>();*/
         }
-
     }
 
     public class RequestLoggerMiddleware
