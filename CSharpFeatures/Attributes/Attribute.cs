@@ -36,10 +36,10 @@ namespace Attributes
         public static void Main(string[] args)
         {
             var demo = new Demo();
-            Console.WriteLine(demo.GetType().GetTypeInfo().GetCustomAttribute<SomeAttribute>().Name);
+            Console.WriteLine(demo.GetType().GetTypeInfo().GetCustomAttribute<SomeAttribute>()?.Name);
             Console.ReadLine();
 
-            var typesWithAttribute = (from type in Assembly.GetEntryAssembly().GetTypes()
+            var typesWithAttribute = (from type in Assembly.GetEntryAssembly()?.GetTypes()
                 where type.GetCustomAttribute<SomeAttribute>() != null
                 select type).ToList();
 

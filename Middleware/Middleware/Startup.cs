@@ -21,10 +21,21 @@ namespace Middleware
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+
+
+            app.Run(async (context) =>
             {
-                app.UseDeveloperExceptionPage();
-            }
+                await context.Response.WriteAsync("Hello World!");
+            });
+
+
+            /*
+
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Hello World! 2");
+            });
+                 
 
             app.Use(async (context, next) =>
             {
@@ -35,15 +46,11 @@ namespace Middleware
 
             app.Map("/hallo", builder => builder.UseWelcomePage());
             //app.UseWelcomePage("/hallo");
-            /*
-                        app.Run(async (context) =>
-                        {
-                            await context.Response.WriteAsync("Hello World! 2");
-                        });
-                        */
+          
+   
 
 
-            /*
+          
             app.Map("/logging", builder =>
             {
                 builder.UseMiddleware<RequestLoggerMiddleware>();
