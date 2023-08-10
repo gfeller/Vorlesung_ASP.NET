@@ -1,24 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+﻿using BmiRechner.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BmiRechner
 {
     public class Program
     {
+
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
-        }
+            var builder = WebApplication.CreateBuilder(args);
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+            builder.Services.AddSingleton<IBmiService, BmiService>();
+
+            builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+
+            // Add services to the container.
+
+            var app = builder.Build();
+
+
+            app.UseStaticFiles();
+
+            app.MapRazorPages();
+
+            app.Run();
+        }
     }
 }
