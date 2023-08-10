@@ -1,6 +1,15 @@
-﻿using BmiRechner.Services;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace BmiRechner
 {
@@ -11,10 +20,8 @@ namespace BmiRechner
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddSingleton<IBmiService, BmiService>();
-
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
-
+        
 
             // Add services to the container.
 
@@ -22,7 +29,7 @@ namespace BmiRechner
 
 
             app.UseStaticFiles();
-
+            
             app.MapRazorPages();
 
             app.Run();
