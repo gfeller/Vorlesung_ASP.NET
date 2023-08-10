@@ -8,24 +8,24 @@ using Microsoft.Extensions.Hosting;
 
 namespace Examples
 {
+
+
     public class Program
     {
+
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
-            builder.Services.AddSession(options => {
-                options.IdleTimeout = TimeSpan.FromMinutes(15);
-            });
+            builder.Services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(15); });
 
             builder.Services.AddSingleton<CitiesService, CitiesService>();
             builder.Services.AddServerSideBlazor();
 
             // Add services to the container.
-
-
 
             var app = builder.Build();
 
@@ -56,8 +56,6 @@ namespace Examples
 
 
             app.Run();
-
         }
-
     }
 }
