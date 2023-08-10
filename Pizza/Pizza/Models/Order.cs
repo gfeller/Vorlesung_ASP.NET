@@ -24,10 +24,6 @@ namespace Pizza.Models
         public DateTime Date { get; set; }
         public OrderState State { get; set; }
 
-        public virtual IdentityUser Customer { get; set; }
-        [Required]
-        public string CustomerId { get; set; }
-
         public Order()
         {
             Date = DateTime.Now;
