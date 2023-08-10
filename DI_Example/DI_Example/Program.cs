@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-
+﻿using Microsoft.AspNetCore.Builder;
 
 namespace DI_Example
 {
@@ -8,14 +6,24 @@ namespace DI_Example
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
-        }
+            var builder = WebApplication.CreateBuilder(args);
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+            // Add services to the container.
+
+
+            // builder.Services.AddTransient<IUserService, UserService>();
+            // builder.Services.AddTransient<IUserService, FakeUserService>();
+            // builder.Services.AddTransient<UserContext, UserContext>();
+
+
+            var app = builder.Build();
+
+            // Configure the HTTP request pipeline. 
+            app.UseDeveloperExceptionPage();
+            app.UseMiddleware<UserMiddleware>();
+
+
+            app.Run();
+        }
     }
 }
