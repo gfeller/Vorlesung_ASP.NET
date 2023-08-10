@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Pizza.Data;
 using Pizza.Models;
 
 namespace Pizza.Pages.Order
 {
-    [Authorize]
-    public class DetailModel : PageModel
+ public class DetailModel : PageModel
     {
         private readonly Pizza.Data.ApplicationDbContext _context;
 
@@ -32,14 +26,14 @@ namespace Pizza.Pages.Order
             {
                 return NotFound();
             }
-            Order = await _context.Order.Include(x=>x.Customer).FirstOrDefaultAsync(m => m.Id == id);
+            Order = await _context.Order.FirstOrDefaultAsync(m => m.Id == id);
             if (Order == null)
             {
                 return NotFound();
             }
 
             Order.State = OrderState.Deleted;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return Page();
             
         }
@@ -50,7 +44,7 @@ namespace Pizza.Pages.Order
             {
                 return NotFound();
             }
-            Order = await _context.Order.Include(o => o.Customer).FirstOrDefaultAsync(m => m.Id == id);
+            Order = await _context.Order.FirstOrDefaultAsync(m => m.Id == id);
             if (Order == null)
             {
                 return NotFound();

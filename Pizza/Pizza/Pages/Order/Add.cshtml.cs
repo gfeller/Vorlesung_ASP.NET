@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Pizza.Data;
-using Pizza.Models;
-using Pizza.Utilities;
 
 namespace Pizza.Pages.Order
 {
-    [Authorize]
     public class AddModel : PageModel
     {
         private readonly ApplicationDbContext _context;
@@ -39,7 +31,7 @@ namespace Pizza.Pages.Order
                 return Page();
             }
 
-            var toAdd = new Models.Order() {Name = Order.Name, CustomerId = User.GetId()};
+            var toAdd = new Models.Order() {Name = Order.Name};
             _context.Order.Add(toAdd);
             await _context.SaveChangesAsync();
 
