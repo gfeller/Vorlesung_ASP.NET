@@ -20,9 +20,8 @@ namespace DI_Example
             var app = builder.Build();
 
             // Configure the HTTP request pipeline. 
-            app.UseDeveloperExceptionPage();
+            
             app.UseMiddleware<UserMiddleware>();
-
 
             app.Run();
         }
