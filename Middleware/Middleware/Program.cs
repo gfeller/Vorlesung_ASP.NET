@@ -5,71 +5,58 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
-namespace Middleware
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline. 
+
+app.Run(async (context) =>
 {
-    public class Program
+    await context.Response.WriteAsync("Hello");
+});
+
+
+
+app.Run();
+
+
+/*
+app.Run(async (context) =>
+{
+    await context.Response.WriteAsync("World");
+});
+
+
+app.Use(async (context, next) =>
+{
+    await context.Response.WriteAsync("Hello");
+    // await next.Invoke();
+});
+
+app.UseMiddleware<UseWelcomePage>();
+
+app.UseMiddleware<RequestLoggerMiddleware>();
+
+public class RequestLoggerMiddleware
+{
+    private readonly RequestDelegate _next;
+    private readonly ILogger _logger;
+
+    public RequestLoggerMiddleware(RequestDelegate next, ILoggerFactory loggerFactory)
     {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
-            // Add services to the container.
-            
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline. 
-
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello");
-            });
-
-
-            /*
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("World");
-            });
-                 
-
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("Hello");
-                // await next.Invoke();
-            });
-
-            app.UseWelcomePage();
-
-            app.UseWelcomePage("/hallo");
-
-            app.Map("/hallo", builder => builder.UseWelcomePage());
-
-
-
-            app.UseStaticFiles();
-
-            app.UseMiddleware<RequestLoggerMiddleware>();*/
-
-            app.Run();
-        }
+        _next = next;
+        _logger = loggerFactory.CreateLogger<RequestLoggerMiddleware>();
     }
 
-    public class RequestLoggerMiddleware
+    public async Task Invoke(HttpContext context)
     {
-        private readonly RequestDelegate _next;
-        private readonly ILogger _logger;
-
-        public RequestLoggerMiddleware(RequestDelegate next, ILoggerFactory loggerFactory)
-        {
-            _next = next;
-            _logger = loggerFactory.CreateLogger<RequestLoggerMiddleware>();
-        }
-
-        public async Task Invoke(HttpContext context)
-        {
-            _logger.LogInformation("Handling request: " + context.Request.Path);
-            await _next.Invoke(context);
-            _logger.LogInformation("Finished handling request.");
-        }
+        _logger.LogInformation("Handling request: " + context.Request.Path);
+        await _next.Invoke(context);
+        _logger.LogInformation("Finished handling request.");
     }
-
 }
+*/
