@@ -25,12 +25,8 @@ namespace BmiRechner
  
         public void ConfigureServices(IServiceCollection services)
         { 
-<<<<<<<< HEAD:Uebung/vorlage/BmiRechner/Startup.cs
-            services.AddMvc(); 
-========
             services.AddMvc();
             services.AddSingleton<IBmiService, BmiService>();
->>>>>>>> 16e7602f6f730744707afc7f58c07ca04ff6563a:Uebung/loesung/BmiRechner/Startup.cs
         }
          
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
